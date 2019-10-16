@@ -1,0 +1,41 @@
+<h1>    Your Items     </h1>
+<table  class="table table-bordered"    >
+  
+  <thead>
+
+    <tr class="bg-primary">
+      
+      <th> Item Name</th>
+
+    <th>  Price</th> 
+
+
+
+    <th>  Buy       </th>
+    
+
+    </tr>
+
+  </thead>
+
+
+
+
+
+
+
+<tr *ngFor="let cart of items">
+  
+  <!-- <app-cart-list  [items]="item" >   </app-cart-list > -->
+
+ <td>{{item.name}}</td>
+ 
+  <td>{{ item.quantity }} </td> 
+  
+ 
+
+</tr>
+
+
+
+</table>

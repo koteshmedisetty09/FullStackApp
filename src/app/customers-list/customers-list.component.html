@@ -1,0 +1,99 @@
+
+
+
+
+<h3>Customers</h3>
+
+
+
+
+
+
+<div>
+
+  <table  class="table table-bordered"    >
+  
+    <thead>
+  
+      <tr class="bg-primary">
+  
+        <th> Company Id</th>
+
+  
+      <th>  Company Name</th> 
+
+      
+
+      <th> STATUS  </th>
+  
+       <th>ACTION</th>
+  
+         
+   
+  
+       
+  
+      </tr>
+  
+    </thead>
+  
+    <tbody>
+  
+      <tr *ngFor="let customer of customers" (click)="editButtonClick(customer.id)" > 
+  
+        <td>{{ customer.id }}</td>
+          
+  <td>{{ customer.name }}</td>
+
+<td> 
+ 
+  <span class="button is-small btn-primary" *ngIf='!customer.active' (click)='updateActive(true,customer.id,customer.name)'>Active</span> </td>
+
+
+  <!-- <div>
+  <td> <span class="button is-small btn-danger" (click)='deleteCustomer()'>Delete</span></td>
+</div> -->
+<div>
+  <button type="button" class="button btn-danger"    (click)='deleteCustomer( customer.id) '>Delete</button>
+</div>
+        <!-- <app-customer-details [customer]='customer'></app-customer-details>
+   -->
+   <button class="sbmt-btn"
+        (click)="onAddToCart()">
+  <!-- <div class="sbmt-btn-txt"
+             [@buttonTextStateTrigger]="buttonTextState"
+             (@buttonTextStateTrigger.done)="buttonTextTransitioned($event)">
+    {{ buttonText }} 
+  </div>-->
+</button>
+  
+      </tr>
+  
+    </tbody>
+  
+  </table>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div *ngFor="let customer of customers">
+ 
+</div>
+
+<div>
+  <button type="button" class="button btn-danger" (click)='deleteCustomers()'>Delete All</button>
+</div>
+
+
+

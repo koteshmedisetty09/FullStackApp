@@ -1,0 +1,77 @@
+
+
+
+
+
+<table  class="table table-bordered"    >
+  
+  <thead>
+
+    <tr class="bg-primary">
+      
+      <th> Item Name</th>
+
+    <th>  Price</th>
+    
+    <th> id</th>
+    <th>  Image    </th>
+   
+
+    </tr>
+
+  </thead>
+
+
+
+
+
+
+
+  <tr *ngFor="let elements of cart">
+    
+    
+
+    <td>{{elements.product_name }}</td>
+   
+    <td>{{elements.price  }} </td>
+
+
+    <td>{{elements.cart_id  }} </td>
+
+
+   
+    
+
+    <div class="form-group">
+        <img [src] ="elements.image" height="100" width="100" *ngIf="previewPhoto"/> 
+      </div>
+      
+      <div class="panel-footer">
+        <button  class="btn btn-primary" type="button" (click)="togglePhotoPreview()" class="btn btn-primary">
+          {{previewPhoto ? "Hide " : "Show " }} Preview
+        </button>
+      </div>
+      
+      <div>
+          <button type="button" class="button btn-danger"    (click)="removeCart(elements.cart_id)">Remove From Cart</button>
+        </div>
+  
+  </tr>
+        <tr >
+             <td class="total">  Total</td>
+     <!-- <button type="button" class="button btn-danger"    (click)="getTotal()">Get Total & Buy</button> -->
+             
+             <td>{{total}}</td> 
+        </tr>
+
+
+
+
+
+</table>
+
+<button class="btn btn-success" (click)="addmoreItems()">Add more items </button> 
+<div style="float: right ;" class="view-cart">
+<button class="btn btn-success" (click)="buyNow()">Proceed to Buy </button> 
+</div>
+<button class="btn btn-success" (click)="logOut()">Log Out </button> 

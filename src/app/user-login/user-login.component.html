@@ -1,0 +1,27 @@
+
+
+<h2>User Login</h2> 
+<h5></h5> 
+
+<form [formGroup]="formdata" (ngSubmit) = "onClickUserSubmit()" >
+   <header>Login</header>
+   <label>Username <span>*</span></label>
+   <input   type="username" class="form-control"  [(ngModel)]="user.username" formControlName="username" name="username"/>   
+  
+   <label>Password <span>*</span></label>
+   <input   type="password" class="form-control"  [(ngModel)]="user.password"  formControlName="password" name="password"/>
+   
+   
+
+  
+   <button [disabled]="!formdata.valid" value="Login"  >Login</button>
+
+   
+
+   <a routerLinkActive="active" routerLink="login" class="btn btn-link" (click)="onClickAdmin()" > Register</a>
+
+        <!-- <button class="btn btn-link"   onclick= "onClickAdmin()" >Admin Login</button> -->
+        
+ 
+</form>  
+

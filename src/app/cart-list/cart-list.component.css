@@ -1,0 +1,8 @@
+.imageClass{
+    width:1px;
+    height:1px;
+} 
+table.total td {
+    font-size: 90%;
+    background-color: brown;
+}

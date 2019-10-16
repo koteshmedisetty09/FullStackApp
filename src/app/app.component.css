@@ -1,0 +1,29 @@
+a{
+
+    margin: 10px;
+
+    height: 40px;
+    width: 200px;
+}
+
+.button-div{
+
+    align-items: center;
+    
+    background-color: lightblue;
+    margin: 0px;
+}
+.button-outer{
+
+    margin: 0px;
+    padding: 0px;
+
+}
+nav{
+
+    padding-left: 470px;
+}
+.router{
+
+    height: 720px;
+}

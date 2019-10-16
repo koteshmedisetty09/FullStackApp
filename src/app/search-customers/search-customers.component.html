@@ -1,0 +1,142 @@
+<!-- <h3>Find By Age</h3>
+<div style="width: 300px;">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="lastname">Age</label>
+      <input type="text" class="form-control" id="age" required [(ngModel)]="age" name="age">
+    </div>
+
+    <div class="btn-group">
+      <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+  </form>
+</div>
+
+<table  class="table table-bordered"    >
+  
+    <thead>
+  
+      <tr class="bg-primary">
+        
+          <th> Company ID</th>
+  
+        <th> Company Name</th>
+  
+      <th> Stock Quantity</th> 
+  
+      
+  
+        
+  
+  
+       
+  
+      </tr>
+  
+    </thead>
+  
+
+
+
+
+
+
+  <tr *ngFor="let customer of customers">
+    
+    
+
+
+    
+    <td>{{ customer.id }}</td>
+          
+    <td>{{ customer.name }}</td>
+    <td>{{ customer.age }}</td>
+  </tr>
+
+
+  
+</table> -->
+ 
+<div  style="float: right;" class="view-cart">
+<button  class="btn btn-primary" type="button" (click)="viewCart()" class="btn btn-primary">
+    View CART
+   </button>
+  </div>
+
+<h3>Find By Company</h3>
+
+<div class="panel-footer">
+  
+  </div>
+
+<div style="width: 300px;">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="lastname">Enter Company </label>
+      <input type="text" class="form-control" id="name" required [(ngModel)]="name" name="name">
+    </div>
+
+    <div class="btn-group">
+      <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+  </form>
+</div>
+
+<table  class="table table-bordered"    >
+  
+    <thead>
+  
+      <tr class="bg-primary">
+        
+        <th> Item Name</th>
+  
+      <th>  Price</th> 
+
+  <th>    Photo      </th>
+
+      <th>  Buy       </th>
+      
+  
+      </tr>
+  
+    </thead>
+  
+
+
+
+ 
+
+
+  <tr *ngFor="let item of items">
+    
+    <!-- <app-cart-list  [items]="item" >   </app-cart-list > -->
+
+   <td>{{item.name}}</td>
+   
+    <td>{{ item.price }} </td> 
+
+
+  
+    <div class="form-group">
+        <img [src] ="item.photopath" height="80" width="80" *ngIf="previewPhoto"/> 
+      </div>
+      
+      <div class="panel-footer">
+        <button  class="btn btn-primary" type="button" (click)="togglePhotoPreview()" class="btn btn-primary">
+          {{previewPhoto ? "Hide " : "Show " }} Preview
+        </button>
+      </div>
+      
+    
+    <td>
+     
+      <a (click)="myfunction(item)"> <img src="assets/images/cart.png" width="50" height="50" ></a>
+
+      
+  </td>
+  
+  </tr>
+  
+
+  
+</table>
