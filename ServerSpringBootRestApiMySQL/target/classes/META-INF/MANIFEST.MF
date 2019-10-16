@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: kotesh.medisetty
+Build-Jdk: 10.0.2
+Implementation-Title: SpringBootRestApiMySQL
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: com.grokonez
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/spring-boot-restapi-mysql
+Created-By: Maven Integration for Eclipse
+
