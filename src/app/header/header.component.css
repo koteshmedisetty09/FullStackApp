@@ -1,9 +1,38 @@
 
 h3 {
-  text-align: center;
+  text-align:center;
   color: antiquewhite;
 }
 .navbar{
 
     margin: 0px;
+}
+a{
+
+  margin: 10px;
+
+  height: 40px;
+  width: 200px;
+}
+
+.button-div{
+
+  align-items: center;
+  
+  background-color: lightblue;
+  margin: 0px;
+}
+.button-outer{
+
+  margin: 0px;
+  padding: 0px;
+
+}
+nav{
+
+  padding-left: 440px;
+}
+.router{
+
+  height: 720px;
 }

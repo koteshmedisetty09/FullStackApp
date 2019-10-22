@@ -6,8 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+show:boolean=false;
+  constructor() { 
 
-  constructor() { }
+    const userid= localStorage.getItem('dataSource');
+    if(userid!=null){
+    this.show = false;
+    }
+  }
 
   ngOnInit() {
   }
