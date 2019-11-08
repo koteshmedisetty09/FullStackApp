@@ -15,6 +15,9 @@ import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { CartListComponent } from './cart-list/cart-list.component';
+import { AdminloginComponent } from './adminlogin/adminlogin.component';
+import { CartAddressComponent } from './cart-address/cart-address.component';
+import { CartBuyComponent } from './cart-buy/cart-buy.component';
 //import { CartDetailsComponent } from './search-customer/cart-details/cart-details.component';
 
     
@@ -30,7 +33,11 @@ import { CartListComponent } from './cart-list/cart-list.component';
     FooterComponent,
    LoginComponent,
     UserLoginComponent,
+    AdminloginComponent,
     CartListComponent,
+    CartAddressComponent,
+    CartBuyComponent,
+  
   //  CartDetailsComponent,
 
   //  MatSortModule

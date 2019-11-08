@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -7,15 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 show:boolean=false;
-  constructor() { 
+hide:boolean=false;
+  constructor( private router: Router ) { 
 
     const userid= localStorage.getItem('dataSource');
-    if(userid!=null){
+    if(userid!= null ){
     this.show = false;
     }
+  else{
+this.show=true;
+
+  }
   }
 
   ngOnInit() {
   }
+
+
+  logOut() {
+    localStorage.clear();
+    this.router.navigate(['userlogin']);  }
+
 
 }

@@ -1,5 +1,4 @@
-
-
+<!--  
 <h2>User Login</h2> 
 <h5></h5> 
 
@@ -20,8 +19,47 @@
 
    <a routerLinkActive="active" routerLink="login" class="btn btn-link" (click)="onClickAdmin()" > Register</a>
 
-        <!-- <button class="btn btn-link"   onclick= "onClickAdmin()" >Admin Login</button> -->
+       
         
  
-</form>  
+</form>   -->
+
+- <header>
+                <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+                <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+                <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+               
+                
+<header>
+ <div class="wrapper fadeInDown">
+                <div id="formContent">
+                 
+              
+                  <div class="fadeIn first">
+                     
+                  </div>
+              
+                
+                  <form [formGroup]="formdata" (ngSubmit) = "onClickUserSubmit()" >
+                    <input   type="username"   formControlName="username"  [(ngModel)]="user.username" name="username" class="fadeIn second"  placeholder="username">
+                    <input   type="password"     formControlName="password"  [(ngModel)]="user.password" name="password" class="fadeIn third"  placeholder="password">
+                    <input type="submit"   class="fadeIn fourth" value="Login"  >
+                    <!-- <a routerLinkActive="active" class="btn btn-link" (click)="onClickRegister()" > Register</a>
+   
+
+                    <a routerLinkActive="active"  class="btn btn-link" (click)="onClickAdmin()" > Admin</a> -->
+                  </form>   
+              
+                
+                  <div id="formFooter">
+                    <a class="underlineHover" href="#">Forgot Password?</a>
+                    
+                      <a routerLinkActive="active" class="btn btn-link" (click)="onClickRegister()" > Register</a>
+   
+
+                    <a routerLinkActive="active"  class="btn btn-link" (click)="onClickAdmin()" > Admin Login</a> 
+                  </div>
+              
+                </div>
+              </div>
 

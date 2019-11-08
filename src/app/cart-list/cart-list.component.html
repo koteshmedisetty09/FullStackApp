@@ -2,7 +2,7 @@
 
 
 
-
+<!-- 
 <table  class="table table-bordered"    >
   
   <thead>
@@ -59,7 +59,7 @@
   </tr>
         <tr >
              <td class="total">  Total</td>
-     <!-- <button type="button" class="button btn-danger"    (click)="getTotal()">Get Total & Buy</button> -->
+    
              
              <td>{{total}}</td> 
         </tr>
@@ -74,4 +74,179 @@
 <div style="float: right ;" class="view-cart">
 <button class="btn btn-success" (click)="buyNow()">Proceed to Buy </button> 
 </div>
-<button class="btn btn-success" (click)="logOut()">Log Out </button> 
+ -->
+<!-- <app-header></app-header>
+
+  <h3 class="mt-4">Your Cart Details</h3>
+
+
+
+<div class="card" *ngFor="let elements of cart">
+    <img class="card-img-top" height="100" width="100"  src="{{ elements.image }}">
+  
+    <div class="card-block">
+        <p class="card-title" >
+            {{elements.product_name}} <span class="text-muted" ><h5>{{ elements.price}}</h5> </span>
+        </p>
+        <p class="card-text">
+            Quantity: {{elements.cart_id  }} sold <br>
+         
+        </p>  
+        <div>
+            <button type="button" class="button btn-danger"    (click)="removeCart(elements.cart_id)">Remove From Cart</button>
+          </div>
+        
+    </div>
+
+    
+</div>   
+
+<div class=total>
+<h5 > Total </h5>
+   {{total}} 
+</div>
+ 
+
+
+<button class="btn btn-success" (click)="addmoreItems()">Add more items </button> 
+<div style="float: right ;" class="view-cart">
+<button class="btn btn-success" (click)="buyNow()">Proceed to Buy </button> 
+</div>  -->
+
+<!------ Include the above in your HEAD tag ---------->
+<app-header>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</app-header>
+<h1>Shopping Cart</h1>
+ 
+<div class="shopping-cart" >
+ 
+  <div class="column-labels">
+    <label class="product-image">Image</label>
+    <label class="product-details">Product</label>
+    <label class="product-price">Price</label>
+ 
+    <label class="product-removal">Remove</label>
+
+  </div>
+ 
+  <div class="product" *ngFor="let elements of cart">
+    <div class="product-image">
+      <img src= "{{ elements.image }}" > 
+    </div>
+    <div class="product-details">
+      <div class="product-title">Release in 2018</div>
+      <p class="product-description"> It has a lightweight,  Battery has 3200mah capacity.</p>
+    </div>
+    <div class="product-price">{{ elements.price}}</div>
+   
+    <div class="product-removal">
+        <button type="button" class="button btn-danger"    (click)="removeCart(elements.cart_id)">Remove From Cart</button>    
+       
+    </div>
+   
+ 
+ 
+ 
+</div>
+</div>
+ 
+<div class="totals">
+ 
+    <div class="totals-item totals-item-total">
+      <label>Grand Total</label>
+      <div class="totals-value" id="cart-total"> {{total  }}</div>
+    </div>
+  </div>
+       
+     
+      <button class="btn btn-success" (click)="addmoreItems()">Add more items </button>
+
+
+
+      <!-- <div  >
+
+        <h2>  Address Details</h2>
+
+        <div class="product" *ngFor="let part of address">
+            <div class="product-price">{{ part.pincode}}</div>
+
+      </div>
+      </div> -->
+
+
+      <head>
+
+      <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+      <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+      <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+      <!------ Include the above in your HEAD tag ---------->
+    </head>
+    <div *ngIf="address!=null">
+        <button class="checkout" (click)="checkOut()">CheckOUT</button>
+    <h2 style=center > Address Details</h2>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+      <div class="container" *ngFor="let part of address">
+        <div class="row"   >
+          <div class="primary" *ngIf="show"   >
+             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                      <div class="row"  >
+                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="border-radius: 16px;">
+                              <div class="well profile col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center" >
+                                      
+                                      <h5 style="text-align:center;"><strong id="user-name">{{part.fullName}}</strong></h5>
+                                      <p style="text-align:center;font-size: smaller;" id="user-frid">FBT000000213 </p>
+                                      <p style="text-align:center;font-size: smaller;overflow-wrap: break-word;" id="user-email">{{part.currentaddress}}</p>
+                                      <p style="text-align:center;font-size: smaller;"><strong>A/C status: </strong><span class="tags" id="user-status">Active</span></p>
+                                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 divider text-center"></div>
+                                   
+                                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 divider text-center"></div>
+                                          <div class="col-lg-6 left" style="text-align:center;overflow-wrap: break-word;">
+                                            PIN
+                                              <h4> <p style="text-align: center;"><strong id="user-globe-rank">{{part.pincode}} </strong></p></h4>           
+                                              <p><small class="label label-success">Delivery Available</small></p>
+                                              <!--<button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> Follow </button>-->
+                                          </div>
+                                          <div class=" col-lg-6 left" style="text-align:center;overflow-wrap: break-word;">
+                                            DAYS
+                                              <h4><p style="text-align: center;"><strong id="user-college-rank">12 </strong></p></h4>                   
+                                              <p> <small class="label label-warning">WorkingDays</small></p>
+                                              <!-- <button class="btn btn-info btn-block"><span class="fa fa-user"></span> View Profile </button>-->
+                                          </div>
+                                          <button type="button" class="button btn-success"    (click)="setPrimary(this)" >set as primary</button>    
+                                           
+
+                                          <button type="button" class="button btn-danger"    (click)="removeAddress(part.addressid)">DELETE</button>    
+
+
+  
+
+
+
+
+
+
+                                    </div>
+                                    
+                                  </div>
+
+
+                                  
+                              </div>
+              
+
+                          </div>
+                      </div>
+                  </div>    
+              </div>
+
+              </div>
+              </div>
+              <button class="btn btn-success" (click)="buyNow()" style=background-color:maroon >Add Address</button>
+        
+     

@@ -56,11 +56,12 @@
 
   
 </table> -->
- 
+<app-header></app-header>
 <div  style="float: right;" class="view-cart">
 <button  class="btn btn-primary" type="button" (click)="viewCart()" class="btn btn-primary">
     View CART
    </button>
+   
   </div>
 
 <h3>Find By Company</h3>
@@ -118,14 +119,10 @@
 
   
     <div class="form-group">
-        <img [src] ="item.photopath" height="80" width="80" *ngIf="previewPhoto"/> 
+        <img [src] ="item.photopath" height="80" width="80" /> 
       </div>
       
-      <div class="panel-footer">
-        <button  class="btn btn-primary" type="button" (click)="togglePhotoPreview()" class="btn btn-primary">
-          {{previewPhoto ? "Hide " : "Show " }} Preview
-        </button>
-      </div>
+      
       
     
     <td>

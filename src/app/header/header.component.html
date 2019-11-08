@@ -8,11 +8,12 @@
     <div class="button-div">
       <nav >
         <a  routerLink="customer" class="btn btn-primary active" role="button" routerLinkActive="active"  *ngIf="show">Customers</a>
-        <a routerLink="add" class="btn btn-primary active" role="button" routerLinkActive="active">Add</a>
-        <a routerLink="findbyitemname" class="btn btn-primary active" role="button" routerLinkActive="active">Search</a>
+        <a routerLink="add" class="btn btn-primary active" role="button" routerLinkActive="active" *ngIf="show" >Add</a>
+        <!-- <a routerLink="findbyitemname" class="btn btn-primary active" role="button" routerLinkActive="active" >Search</a> -->
       </nav>
     </div>
-     
+    
+ <button style=float:right  class="btn btn-danger" (click)="logOut()">LogOut </button>
     </div>
     
   

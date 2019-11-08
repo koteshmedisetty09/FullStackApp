@@ -19,7 +19,7 @@ export class SearchCustomersComponent implements OnInit {
 
   age: number;
 
-  
+
   customers: Customer[];
 
   constructor(private dataService: CustomerService) { }
@@ -47,7 +47,7 @@ export class SearchCustomersComponent implements OnInit {
 
   // age: number;
   name: string;
-//userid: number;
+// userid: number;
   total: number;
    items: Items;
    cart: Cart;
@@ -55,42 +55,41 @@ export class SearchCustomersComponent implements OnInit {
   // tslint:disable-next-line: variable-name
   _router: any;
   previewPhoto: boolean;
-  //itemsList: Items;
+  // itemsList: Items;
 
   // tslint:disable-next-line: max-line-length
-  constructor(private router: Router, private userservice: UserService ,private dataService: CustomerService ,private cartService: CartService) { }
+  constructor(private router: Router, private userservice: UserService , private dataService: CustomerService , private cartService: CartService) { }
 
   ngOnInit() {
     this.name = null;
   //  this.userid = null;
     this.getData();
 
-    
-    this.userservice.login(this.user.username , this.user.password)
-       
-    .subscribe(
-        data => {
-         console.log(data);
 
-        //this.list.push({"id":userid})
+    //  this.userservice.login(this.user.username , this.user.password)
 
-         console.log(data.userid);
-      const id=data.userid;
-      console.log('ids' +id);
-         if (data== null){
+    //  .subscribe(
+    //      data => {
+    //       console.log(data);
+    //      //this.list.push({"id":userid})
 
-           alert('invalid credentials');
+    //      console.log(data.userid);
+    //    const id=data.userid;
+    //    console.log('ids' +id);
+    //       if (data== null){
 
-         }
-         else{
-           console.log(data);
-           this.router.navigate(['/findbyitemname',id]);
+    //         alert('invalid credentials');
 
-         }
-           
-        },
-        error => console.log(error));
-       
+    //       }
+    //       else{
+    //         console.log(data);
+    //         this.router.navigate(['/findbyitemname',id]);
+
+    //       }
+
+    //     },
+    //     error => console.log(error));
+
 
 
 
@@ -101,7 +100,7 @@ export class SearchCustomersComponent implements OnInit {
 
   togglePhotoPreview() {
     this.previewPhoto = !this.previewPhoto;
-  } 
+  }
 
 
   getData() {
@@ -120,7 +119,7 @@ export class SearchCustomersComponent implements OnInit {
  );
 
 
- this.userservice.getUser(this.userid)
+ this.userservice.getUser(this.user.userid)
  // tslint:disable-next-line: deprecation
  .subscribe(
   user => {this.user = user;
@@ -144,11 +143,11 @@ export class SearchCustomersComponent implements OnInit {
   }
 
 
-  myfunction(item) {
+  myfunction(item: any) {
 
 console.log(localStorage.getItem('dataSource'));
-const userid= localStorage.getItem('dataSource');
-console.log(userid);
+const userid = localStorage.getItem('dataSource');
+// console.log(userid);
 
 console.log('hru');
 this.cartService.createCart(item, userid)
@@ -162,10 +161,18 @@ this.cartService.createCart(item, userid)
         error => console.log(error));
   }
 
-  viewCart(){
-    const userid= localStorage.getItem('dataSource');
+
+  logOut() {
+    localStorage.clear();
+    this.router.navigate(['userlogin']);
+  }
+
+
+
+  viewCart() {
+    const userid = localStorage.getItem('dataSource');
     console.log(userid);
-    this.router.navigate(['/cart',userid]);
+    this.router.navigate(['/cart', userid]);
   }
 
 
@@ -173,4 +180,4 @@ this.cartService.createCart(item, userid)
     this.searchCustomers();
   }
 
-}   
+}

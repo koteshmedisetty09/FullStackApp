@@ -1,8 +1,6 @@
-<div class ="create-outer">
+<!-- <div class ="create-outer">
             
-           <!-- <div class="form_container">
-              
-                 <h2>Register</h2>  -->
+       
                 
                  <form class="form-horizontal"  [formGroup]="newuserForm"  (ngSubmit) = "onClickSubmit()" >
 
@@ -38,21 +36,6 @@
                                 </div>
 
 
-                    <!-- <label>Username <span>*</span></label>
-                    <div class="form-group">
-                    <input   type="username" class="form-control"  [(ngModel)]="user.username"  name="username"/>
-                   -->
-                    
-
-                    <!-- <div class="help">At least 6 character</div>
-                  </div>
-                    <label>Password <span>*</span></label>
-
-                    <div class="form-group">
-                    <input   type="password" class="form-control"  [(ngModel)]="user.password"  name="password"/>
-                    
-                    <div class="help">Use upper and lowercase lettes as well</div>
-               </div> -->
 
 
 
@@ -87,4 +70,71 @@
    <h4>You submitted successfully!</h4>
    <button class="btn btn-success" (click)="newuser()">Login</button>
  </div>
-</div>
+</div> -->
+
+<header>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+</header>
+
+<div class="container">
+        <div class="row centered-form">
+        <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+        	<div class="panel panel-default">
+        		<div class="panel-heading">
+			    		<h3 class="panel-title" style=color:maroon>Please sign up  to Shop <small>It's Worthy</small></h3>
+			 			</div>
+			 			<div class="panel-body">
+
+                <form  role="form" class="form-horizontal"  [formGroup]="newuserForm"  (ngSubmit) = "onClickSubmit()" >
+			    		
+			    			<div class="row">
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
+			    					<div class="form-group">
+			                <input type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name">
+			    					</div>
+			    				</div>
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
+			    					<div class="form-group">
+			    						<input type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name">
+			    					</div>
+                  </div>
+                  
+
+                  <div class="col-xs-6 col-sm-6 col-md-6">
+                      <div class="form-group">
+                        <input type="text"  formControlName="username"  class="form-control input-sm"  [(ngModel)]="user.username" (blur)="logValidationErrors()" placeholder="Username">
+                        <span class="help-block"
+                        *ngIf="formErrors.username">
+                    {{formErrors.username}}
+                    </span>
+                      </div>
+                    </div>
+			    			</div>
+
+			    			<div class="form-group">
+			    				<input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email Address">
+			    			</div>
+
+			    			<div class="row">
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
+			    					<div class="form-group">
+			    						<input type="password"  id="password" class="form-control input-sm" formControlName="password"   [(ngModel)]="user.password"(blur)="logValidationErrors()" placeholder="Password">
+                      <span class="help-block"
+                      *ngIf="formErrors.password">
+                  {{formErrors.password}}
+                  </span>
+                    </div>
+			    				</div>
+			    			</div>
+			    			
+			    			<input type="submit" value="Register" class="btn btn-info btn-block">
+			    		
+			    		</form>
+			    	</div>
+	    		</div>
+    		</div>
+    	</div>
+    </div>

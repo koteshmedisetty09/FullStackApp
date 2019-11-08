@@ -7,6 +7,9 @@ import { SearchCustomersComponent } from './search-customers/search-customers.co
 import { LoginComponent } from './login/login.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { CartListComponent } from './cart-list/cart-list.component';
+import { AdminloginComponent } from './adminlogin/adminlogin.component';
+import { CartAddressComponent } from './cart-address/cart-address.component';
+
 //import { CartDetailsComponent } from './search-customers/cart-details.component';
 
 const routes: Routes = [    
@@ -16,9 +19,10 @@ const routes: Routes = [
 
     
  { path: 'login', component: LoginComponent },
-//{ path: '', loadChildren: './usermodule/Usermodule.module#UsermoduleModule' },
+//{ path: '', loadChildren: './usermodule/Usermodule.module#UsermoduleModule' },\
+{ path: 'adminlogin', component: AdminloginComponent },
 
- { path: 'customer', component: CustomersListComponent },
+ { path: 'add/customer', component: CustomersListComponent },
   { path: 'add', component: CreateCustomerComponent },
   { path: 'findbyitemname/:userid', component: SearchCustomersComponent },
   { path: 'findbyitemname', component: SearchCustomersComponent },
@@ -28,6 +32,10 @@ const routes: Routes = [
 
 
   { path: 'edit/:id', component: CreateCustomerComponent },
+  { path: 'cartaddress', component: CartAddressComponent },
+  { path: 'cart/cartaddress/:userid', component:  CartAddressComponent  },
+ 
+ 
 
 ];
 

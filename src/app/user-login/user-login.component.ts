@@ -8,6 +8,7 @@ import { AuthenticationService } from '../authentication-service.service';
 
 import { User } from 'src/app/User';
 import { UserService } from '../usermodule/user.service';
+import { invalid } from '@angular/compiler/src/render3/view/util';
 
 
 //import { AlertService, AuthenticationService } from '../_services';
@@ -26,7 +27,7 @@ export class UserLoginComponent implements OnInit {
   
    submitted = false;
    returnUrl: string;
-list:any=[];
+list: any = [];
   // tslint:disable-next-line: max-line-length
   constructor( private formBuilder: FormBuilder, private userService: UserService, private route: ActivatedRoute, private router: Router) { }
   ngOnInit() {
@@ -34,9 +35,9 @@ list:any=[];
       username: ['', Validators.required],
       password: ['', Validators.required]
   });
-
+  
   // reset login status
-  //this.userService.logout();
+  // this.userService.logout();
 
   // get return url from route parameters or default to '/'
   // this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
@@ -48,8 +49,12 @@ list:any=[];
   }  
     
 
-  onClickAdmin() {
+  onClickRegister() {
     this.router.navigate(['login']);
+
+  }
+  onClickAdmin(){
+    this.router.navigate(['adminlogin']);
 
   }
 
@@ -70,32 +75,26 @@ list:any=[];
            data => {
             console.log(data);
 
-           //this.list.push({"id":userid})
+            const id = data.userid;     
 
-            console.log(data.userid);
-
-
-         let id=data.userid;
-
-         localStorage.setItem('dataSource', id);
-
-         console.log('ids' +id);
-            if (data== null){
-
+            localStorage.setItem('dataSource', id);
+   
+            console.log('ids' + id);
+            if (data == null  )      {
+           
               alert('invalid credentials');
 
-            }
-            else{
+            } else {
               console.log(data);
-              this.router.navigate(['/findbyitemname',id]);
+              this.router.navigate(['/findbyitemname', id]);
 
             }
-              
+ 
            },
            error => console.log(error));
-          
-}  
-} 
+
+}
+}   
 
 
 

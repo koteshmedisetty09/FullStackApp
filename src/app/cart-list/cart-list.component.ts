@@ -2,7 +2,10 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Items } from '../Items';
 import { Cart } from '../Cart';
 import { CartService } from '../cart.service';
-import { Router } from '@angular/router';
+import { Router, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
+import { AddressService } from '../address.service';
+import { Address } from 'cluster';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-cart-list',
@@ -11,62 +14,118 @@ import { Router } from '@angular/router';
 })
 
 export class CartListComponent implements OnInit {
- 
+
+
+  address: Address[];
 
   previewPhoto: boolean;
   cart: Cart[];
 
 
-  
-total: number =0;
+  show: boolean ;
+total = 0;
   items: any;
-//userid: number;
+// userid: number;
+
+
+  constructor(private cartService: CartService ,  private addressService: AddressService, private router: Router ) {
+    const user = localStorage.getItem('dataSource');
+    // tslint:disable-next-line: radix
+    const userid = parseInt(user);
+    this.getAllItems(userid);
+    this.getAllAddress(userid);
+    
+  }
 
 
 
-  constructor(private cartService: CartService , private router: Router ) { }
+
 
   ngOnInit() {
-this.reloadData();
-const userid = localStorage.getItem('dataSource');
+this.show = true;
+  }
 
-this.cartService.getAllCartitems(userid).subscribe(items => {
-  this.items = items;
- // let id=items.userid;
- // console.log("cart-ids"+id);
-  this.items.forEach(item => {
-    console.log(item);
-   
-    this.total = this.total + item.price; 
+  getAllItems(userid) {
+  this.cartService.getAllCartitems(userid).subscribe(cartlist => {
+    this.cart = cartlist;
+    this.cart.forEach(item => {
+      console.log(item);
+      this.total = this.total + item.price;
+      console.log(this.total);
+    });
+    return this.total;
   });
-  return this.total;
-});
+}
+  getAllAddress(userid) {
+
+  this.addressService.getAllAddress(userid).subscribe(cartlist => {
+    // tslint:disable-next-line: no-debugger
+    debugger;
+    this.address = cartlist;
+
+    console.log(this.address);
+    });
+}
+
+//   reloadData() {
+//     const user= localStorage.getItem('dataSource');
+// const userid=parseInt(user);
+// console.log(this.items);
+//     this.cartService.getAllCartitems(userid).subscribe(
+//       (cartlist) => this.cart = cartlist,
+
+
+//  //this.total= this.countTotal(),
+
+//  (err) => console.log(err)
+
+//  );
+
+//   }
+
+
+reloadData(userid) {
+
+
+this.addressService.getAllAddress(userid).subscribe(cartlist => {
+  this.address = cartlist;
+
+  console.log(this.address);
+  });
+
+
+this.cartService.getAllCartitems(userid).subscribe(cartlist => {
+    this.cart = cartlist;
+    this.cart.forEach(item => {
+      console.log(item);
+      this.total = this.total + item.price;
+      console.log(this.total);
+    });
+    return this.total;
+  });
+// this.cartService.getAllCartitems(userid).subscribe(cartlist => {
+//     this.cart = cartlist;
+
+//     this.cart.forEach(item => {
+//       console.log(item);
+
+//       this.total = this.total + item.price;
+//       console.log(this.total);
+//     });
+//     return this.total;
+//   });
+}
 
 
 
 
 
+setPrimary(e: any) {
+  this.show = false;
+  console.log('');
 
 
-
-  }
-
-
-  reloadData() {
-    const userid= localStorage.getItem('dataSource');
-
-    this.cartService.getAllCartitems(userid).subscribe(
-      (cartlist) => this.cart = cartlist,
-
-     
- // this.total= this.countTotal(),
-
- (err) => console.log(err)
-
- );
-
-  }
-
+}
 
 
   togglePhotoPreview() {
@@ -76,20 +135,21 @@ this.cartService.getAllCartitems(userid).subscribe(items => {
 
 
   buyNow() {
-    alert('Thank you for Shopping with us');
+    const userid = localStorage.getItem('dataSource');
 
-  
+
+    this.router.navigate(['cart/cartaddress/', userid]);
+
 
   }
-
-  logOut() {
-    localStorage.clear();
-    this.router.navigate(['userlogin']);  }
+  checkOut() {
+  alert('Thank You For Shopping with us');
+  }
 
   addmoreItems() {
-   
 
-    let id=this.items.userid;
+
+    const id = localStorage.getItem('dataSource');
     this.router.navigate(['/findbyitemname', id]);
 
   }
@@ -99,21 +159,39 @@ this.cartService.getAllCartitems(userid).subscribe(items => {
 
   // tslint:disable-next-line: variable-name
   removeCart(cart_id: number) {
+    const user = localStorage.getItem('dataSource');
+    // tslint:disable-next-line: radix
+    const userid = parseInt(user);
     console.log(cart_id);
-    
+
     this.cartService.deleteCartItem(cart_id)
       .subscribe(
         data => {
           console.log(data);
-      this.reloadData();
+          this.reloadData(userid);
 
         },
         error => console.log(error));
   }
 
+  removeAddress(addressid: number) {
+    console.log(addressid);
+    const user = localStorage.getItem('dataSource');
+    const userid = parseInt(user);
+    
+    this.addressService.deleteAddress(addressid)
+      .subscribe(
+        data => {
+          console.log(data);
+          this.reloadData(userid);
+
+        },
+        error => console.log(error));
 
 
-  
+  }
+
+
 
   // tslint:disable-next-line: variable-name
 

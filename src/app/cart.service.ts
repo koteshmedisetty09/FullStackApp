@@ -12,7 +12,7 @@ export class CartService {
 
   constructor(private http: HttpClient) { }
 
-  
+
 
     createCart(item: any, userid: any  ) : Observable<any> {
       console.log('in cart service');
@@ -20,27 +20,27 @@ export class CartService {
       console.log(userid);
 
       const bob: Person = {
-        userid : userid, itemlist: item
+        userid, itemlist: item
     };
 
       return this.http.post(this.baseUrl, bob  );
    }
 
- 
-  
 
 
-  
+
+
+
   // createCart(item: any ) : Observable<any> {
   //   console.log('in cart service');
   //   console.log(item);
-    
+
   //   return this.http.post(this.baseUrl, item );
   // }
 
 
-   
-  
+
+
     // tslint:disable-next-line: variable-name
     deleteCartItem(id: number): Observable<any> {
       console.log('indelete cart');
@@ -51,14 +51,14 @@ export class CartService {
 
 
   // tslint:disable-next-line: variable-name
-  getAllCartitems(userid: Iterable<number>): Observable<any> {
+  getAllCartitems(userid: any): Observable<any> {
     console.log(userid);
     return this.http.get(`${this.baseUrl}/${userid}`);
    // return this.http.get(this.baseUrl, userid);
 
 }
 
- 
+
 
 
 
