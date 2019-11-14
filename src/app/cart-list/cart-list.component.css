@@ -107,9 +107,10 @@ body{ margin:0 auto; }
   }
    
   /* Product entries */
-  .primary{
-    background-color: chartreuse;
-  }
+  /* .primary{
+    background-color:darkslategray;
+    color: crimson;
+  } */
   .product {
     margin-bottom: 20px;
     padding-bottom: 10px;

@@ -4,8 +4,9 @@ import { Cart } from '../Cart';
 import { CartService } from '../cart.service';
 import { Router, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
 import { AddressService } from '../address.service';
-import { Address } from 'cluster';
 import { Observable } from 'rxjs';
+//import { Address, Address } from 'FullStackApp/src/app/Address';
+import { Address } from '../Address';
 
 @Component({
   selector: 'app-cart-list',
@@ -26,7 +27,8 @@ export class CartListComponent implements OnInit {
 total = 0;
   items: any;
 // userid: number;
-
+// tslint:disable-next-line: variable-name
+_address: Address = new Address();
 
   constructor(private cartService: CartService ,  private addressService: AddressService, private router: Router ) {
     const user = localStorage.getItem('dataSource');
@@ -120,13 +122,27 @@ this.cartService.getAllCartitems(userid).subscribe(cartlist => {
 
 
 
-setPrimary(e: any) {
-  this.show = false;
-  console.log('');
+setPrimary(addressid: number) {
 
 
-}
+  
+  console.log('successfully address was set');
+  
+  
+  console.log(addressid);
 
+  this.addressService.updatePrimary(this._address,addressid) 
+      .subscribe(
+        data => {
+          alert('changed preference successfully');
+          console.log(data);
+          console.log('in updation lag')
+
+        }, 
+        error => console.log(error));
+
+} 
+  
 
   togglePhotoPreview() {
     this.previewPhoto = !this.previewPhoto;
@@ -178,7 +194,7 @@ setPrimary(e: any) {
     console.log(addressid);
     const user = localStorage.getItem('dataSource');
     const userid = parseInt(user);
-    
+
     this.addressService.deleteAddress(addressid)
       .subscribe(
         data => {

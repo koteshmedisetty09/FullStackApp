@@ -3,14 +3,14 @@ import { User } from 'FullStackApp/src/app/User';
 
 
 export class Address {
-    addressid: number;
+    id: number;
     fullName: string;
-   
 
-    pincode: number;  
 
-  
+    pincode: number;
+
+
     currentaddress: string;
-    user:  User;
+    primary =false;
+    user: User;
 }
- 

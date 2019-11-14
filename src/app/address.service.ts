@@ -40,9 +40,16 @@ deleteAddress(addressid: number): Observable<any> {
        
   return this.http.delete(`${this.baseUrl}/${addressid}`);
 }
-  
+ 
+updatePrimary(address: any, addressid: any): Observable<any> {
+  console.log('Updating Primary');
+  console.log(address);
+  console.log(addressid);
+  return this.http.put(`${this.baseUrl}/${addressid}`, address);
+ 
+}   
 }
-
+  
 
 
 

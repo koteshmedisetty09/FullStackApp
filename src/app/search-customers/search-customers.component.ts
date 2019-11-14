@@ -153,7 +153,7 @@ console.log('hru');
 this.cartService.createCart(item, userid)
       .subscribe(
         data => {
-          console.log(data);
+          console.log(data);  
        //   this.router.navigate(['cart']);
 
           alert('item added to cart successfully');

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-//import { Component, OnInit } from '@angular/core';
+// import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { first } from 'rxjs/operators';
@@ -11,9 +11,9 @@ import { UserService } from '../usermodule/user.service';
 import { invalid } from '@angular/compiler/src/render3/view/util';
 
 
-//import { AlertService, AuthenticationService } from '../_services';
+// import { AlertService, AuthenticationService } from '../_services';
 
-@Component({  
+@Component({
 
  selector: 'app-user-login',
   templateUrl: './user-login.component.html',
@@ -24,7 +24,7 @@ export class UserLoginComponent implements OnInit {
 
   user: User = new User();
   // submitted: boolean;
-  
+
    submitted = false;
    returnUrl: string;
 list: any = [];
@@ -35,7 +35,7 @@ list: any = [];
       username: ['', Validators.required],
       password: ['', Validators.required]
   });
-  
+
   // reset login status
   // this.userService.logout();
 
@@ -46,14 +46,14 @@ list: any = [];
      if (formcontrol.value.length < 5) {
         return {password : true};
      }
-  }  
-    
+  }
+
 
   onClickRegister() {
     this.router.navigate(['login']);
 
   }
-  onClickAdmin(){
+  onClickAdmin() {
     this.router.navigate(['adminlogin']);
 
   }
@@ -75,26 +75,29 @@ list: any = [];
            data => {
             console.log(data);
 
-            const id = data.userid;     
+            const id = data.userid;
 
             localStorage.setItem('dataSource', id);
-   
+
             console.log('ids' + id);
-            if (data == null  )      {
-           
+            if (data == null && data == undefined  )      {
+
               alert('invalid credentials');
 
-            } else {
+            }
+
+            else {
               console.log(data);
               this.router.navigate(['/findbyitemname', id]);
 
             }
- 
+
            },
-           error => console.log(error));
+           error => console.log(error))
+                        
 
 }
-}   
+}
 
 
 
